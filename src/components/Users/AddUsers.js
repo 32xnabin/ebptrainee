@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Card from "../UI/Card";
-import Button from "../UI/Button";
-import ErrorModal from "../UI/ErrorModule";
+import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
+
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 
 const AddUser = (props) => {
   const [username, setUsername] = useState("");
@@ -29,19 +30,9 @@ const AddUser = (props) => {
     setAge(event.target.value);
   };
 
-  const errorHandler = () => {
-    setError(null);
-  };
-
   return (
     <div>
-      {error && (
-        <ErrorModal
-          title="An error has occured!"
-          message="something went wrong"
-          onOk={errorHandler}
-        />
-      )}
+      {error && <ErrorModal open={error} setOpen={setError} />}
 
       <Card className={classes.input}>
         <form onSubmit={submitHandler}>
@@ -49,7 +40,10 @@ const AddUser = (props) => {
           <input id="username" type="text" onChange={usernameHandler} />
           <label htmlFor="age"> Age (Years)</label>
           <input id="age" type="number" onChange={ageHandler} />
-          <Button type="submit">Submit</Button>
+
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
         </form>
       </Card>
     </div>

@@ -1,7 +1,8 @@
 import React from "react";
 
-import Card from "../UI/Card";
 import classes from "./User.module.css";
+
+import Card from "@mui/material/Card";
 
 const UsersList = (props) => {
   return (
