@@ -20,6 +20,7 @@ export default function MealItemForm(props) {
 
         props.onAddToCart(enteredAmountNumber)
     }
+    console.log(amountInputRef)
 
 
     return (
